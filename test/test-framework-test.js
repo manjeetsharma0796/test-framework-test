@@ -2,49 +2,49 @@ const demo = require("../src/demo.js");
 const testLibrary = require("../lib/testing.js");
 const displayHeadline = testLibrary.displayHeadline;
 const assertEquals = testLibrary.assertEquals;
-const equalityCheckBy = testLibrary.equalityCheckBy;
+const isEqual = testLibrary.isEqual;
 const displaySummary = testLibrary.displaySummary;
 
-const testEqualityCheckBy = function() {
+const testCheckEquality = function() {
   const it = function(testName, testData) {
     assertEquals(testData.actual, testData.expected, testName);
   };
 
-  displayHeadline("testEqualityCheckBy");
+  displayHeadline("testCheckEquality");
 
   it("Should give true, as number provided is same", {
-    actual: equalityCheckBy(3, 3),
+    actual: isEqual(3, 3),
     expected: true
   });
 
   it("Should give false, as number provided is not same", {
-    actual: equalityCheckBy(3, 4),
+    actual: isEqual(3, 4),
     expected: false
   });
 
   it("Should give true, as text provided is same", {
-    actual: equalityCheckBy("hi", "hi"),
+    actual: isEqual("hi", "hi"),
     expected: true
   });
 
   it("Should give false, as text provided is not same", {
-    actual: equalityCheckBy("hi", "h"),
+    actual: isEqual("hi", "h"),
     expected: false
   });
 
   it("Should give true, as array provided is same", {
-    actual: equalityCheckBy([1], [1]),
+    actual: isEqual([1], [1]),
     expected: true 
   });
 
   it("Should give true, as nested array provided is same", {
-    actual: equalityCheckBy([[2]], [[2]]),
+    actual: isEqual([[2]], [[2]]),
     expected: true 
   });
 };
 
 const test = function() {
-  testEqualityCheckBy();
+  testCheckEquality();
 };
 
 test();
