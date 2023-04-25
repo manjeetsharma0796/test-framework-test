@@ -1,34 +1,36 @@
 const demo = require("../src/demo.js"); 
 const testLibrary = require("../lib/testing.js");
 const displayHeadline = testLibrary.displayHeadline;
-const assertDatatype = testLibrary.assertDatatype;
+const assertEquals = testLibrary.assertEquals;
+const isEqualsTo = testLibrary.isEqualsTo;
+const areEquals = testLibrary.areEquals;
 const displaySummary = testLibrary.displaySummary;
 
-const testAssertDatatype = function() {
+const testAreEquals = function() {
   const it = function(testName, testData) {
-    assertDatatype(testData.actual, testData.expected, testName);
+    assertEquals(testData.actual, testData.expected, testName);
   };
 
-  displayHeadline("testAssertDatatype");
+  displayHeadline("testAreEquals");
 
   it("Should give true, as number provided is same", {
-    actual: 3,
-    expected: 3
+    actual: areEquals(3, 3),
+    expected: true
   });
 
   it("Should give true, as text provided is same", {
-    actual: "hi",
-    expected: "hi"
+    actual: areEquals("hi", "hi"),
+    expected: true
   });
 
-  it("Should give true, as array provided is same", {
-    actual: [1],
-    expected: [1]
+  it("Should give false, as text provided is not same", {
+    actual: areEquals("hi", "h"),
+    expected: false
   });
 };
 
 const test = function() {
-  testAssertDatatype();
+  testAreEquals();
 };
 
 test();
