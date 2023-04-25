@@ -27,6 +27,16 @@ const testAreEquals = function() {
     actual: areEquals("hi", "h"),
     expected: false
   });
+
+  it("Should give true, as array provided is same", {
+    actual: areEquals([1], [1]),
+    expected: true 
+  });
+
+  it("Should give true, as nested array provided is same", {
+    actual: areEquals([[2]], [[2]]),
+    expected: true 
+  });
 };
 
 const test = function() {
